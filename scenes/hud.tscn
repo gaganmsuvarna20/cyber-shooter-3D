@@ -1,0 +1,265 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dot" type="ColorRect" parent="Control/Crosshair"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+color = Color(1, 1, 1, 0.8)
+
+[node name="Top" type="ColorRect" parent="Control/Crosshair"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -16.0
+offset_right = 1.0
+offset_bottom = -8.0
+color = Color(0.2, 0.9, 1, 0.85)
+
+[node name="Bottom" type="ColorRect" parent="Control/Crosshair"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 8.0
+offset_right = 1.0
+offset_bottom = 16.0
+color = Color(0.2, 0.9, 1, 0.85)
+
+[node name="Left" type="ColorRect" parent="Control/Crosshair"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -1.0
+offset_right = -8.0
+offset_bottom = 1.0
+color = Color(0.2, 0.9, 1, 0.85)
+
+[node name="Right" type="ColorRect" parent="Control/Crosshair"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -1.0
+offset_right = 16.0
+offset_bottom = 1.0
+color = Color(0.2, 0.9, 1, 0.85)
+
+[node name="BottomLeft" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -110.0
+offset_right = 240.0
+offset_bottom = -25.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="HealthText" type="Label" parent="Control/BottomLeft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+text = "HP 100 / 100"
+
+[node name="HealthBar" type="ProgressBar" parent="Control/BottomLeft"]
+custom_minimum_size = Vector2(210, 16)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="ShieldText" type="Label" parent="Control/BottomLeft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "SHIELD 50"
+
+[node name="ShieldBar" type="ProgressBar" parent="Control/BottomLeft"]
+custom_minimum_size = Vector2(210, 12)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="BottomRight" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -90.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+mouse_filter = 2
+
+[node name="WeaponText" type="Label" parent="Control/BottomRight"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 16
+text = "ASSAULT RIFLE"
+horizontal_alignment = 2
+
+[node name="AmmoText" type="Label" parent="Control/BottomRight"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "30 / 180"
+horizontal_alignment = 2
+
+[node name="TopLeft" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="ScoreText" type="Label" parent="Control/TopLeft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 20
+text = "SCORE: 0"
+
+[node name="WaveText" type="Label" parent="Control/TopLeft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "WAVE 1"
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WaveBanner" type="Label" parent="Control/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 42
+text = "WAVE 1 START"
+horizontal_alignment = 1
+
+[node name="DamageVignette" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+
+[node name="PauseMenu" type="PanelContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -140.0
+offset_right = 160.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PauseMenu"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title" type="Label" parent="Control/PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="SensContainer" type="HBoxContainer" parent="Control/PauseMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseMenu/VBoxContainer/SensContainer"]
+layout_mode = 2
+text = "Sensitivity:"
+
+[node name="SensSlider" type="HSlider" parent="Control/PauseMenu/VBoxContainer/SensContainer"]
+custom_minimum_size = Vector2(160, 20)
+layout_mode = 2
+min_value = 0.001
+max_value = 0.01
+step = 0.0005
+value = 0.003
+
+[node name="ResumeButton" type="Button" parent="Control/PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "RESUME"
+
+[node name="GameOverMenu" type="PanelContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -140.0
+offset_right = 200.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GameOverMenu"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="Control/GameOverMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 26
+text = "MISSION FAILED"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="Control/GameOverMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "FINAL SCORE: 0"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="Control/GameOverMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "RETRY MISSION"

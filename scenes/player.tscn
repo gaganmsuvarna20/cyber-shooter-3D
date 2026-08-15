@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/weapon_mesh.gd" id="2_weapon_mesh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.45
+height = 2.0
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+fov = 85.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -80)
+collision_mask = 5
+
+[node name="WeaponHolder" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.22, -0.45)
+
+[node name="RifleMesh" type="Node3D" parent="Head/Camera3D/WeaponHolder"]
+script = ExtResource("2_weapon_mesh")
+weapon_type = 0
+
+[node name="ShotgunMesh" type="Node3D" parent="Head/Camera3D/WeaponHolder"]
+script = ExtResource("2_weapon_mesh")
+weapon_type = 1
+
+[node name="PlasmaMesh" type="Node3D" parent="Head/Camera3D/WeaponHolder"]
+script = ExtResource("2_weapon_mesh")
+weapon_type = 2
+
+[node name="RailgunMesh" type="Node3D" parent="Head/Camera3D/WeaponHolder"]
+script = ExtResource("2_weapon_mesh")
+weapon_type = 3
+
+[node name="MuzzleFlashLight" type="OmniLight3D" parent="Head/Camera3D/WeaponHolder"]
+visible = false
+light_color = Color(1, 0.8, 0.3, 1)
+light_energy = 4.0
+omni_range = 6.0
